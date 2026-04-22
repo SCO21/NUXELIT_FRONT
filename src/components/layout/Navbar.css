@@ -1,0 +1,128 @@
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all var(--transition-base);
+}
+
+.navbar--scrolled {
+    background: rgba(11, 15, 26, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 0.6rem 0;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    z-index: 10;
+}
+
+.navbar__logo-icon {
+    background: var(--color-gradient-subtle);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.6rem;
+    font-weight: 800;
+}
+
+.navbar__logo-text {
+    color: var(--color-text);
+}
+
+.navbar__links {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.navbar__link {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.navbar__link:hover {
+    color: var(--color-text);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.navbar__cta {
+    white-space: nowrap;
+}
+
+.navbar__toggle {
+    display: none;
+    background: transparent;
+    color: var(--color-text);
+    z-index: 10;
+    padding: 0.3rem;
+}
+
+/* ── Mobile ── */
+.navbar__mobile {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 360px;
+    height: 100vh;
+    background: var(--color-background-light);
+    border-left: 1px solid var(--color-border);
+    padding: 5rem 2rem 2rem;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar__mobile-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.navbar__mobile-link {
+    display: block;
+    padding: 1rem 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.navbar__mobile-link:hover {
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--color-text);
+}
+
+@media (max-width: 1024px) {
+
+    .navbar__links,
+    .navbar__cta {
+        display: none;
+    }
+
+    .navbar__toggle {
+        display: block;
+    }
+}

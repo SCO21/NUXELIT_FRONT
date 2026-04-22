@@ -1,0 +1,44 @@
+.techstack__marquee {
+    overflow: hidden;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.techstack__track {
+    display: flex;
+    gap: 1rem;
+    animation: marquee 30s linear infinite;
+    width: max-content;
+}
+
+.techstack__item {
+    padding: 0.8rem 1.5rem;
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.techstack__name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 640px) {
+    .techstack__item {
+        padding: 0.6rem 1rem;
+    }
+
+    .techstack__name {
+        font-size: 0.8rem;
+    }
+}
