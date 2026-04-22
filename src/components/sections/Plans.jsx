@@ -1,11 +1,33 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCheck, FaStar } from 'react-icons/fa';
 import siteConfig from '../../config/siteConfig';
+import { getPlans } from '../../utils/api';
 import './Plans.css';
 
 export default function Plans() {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const [plans, setPlans] = useState(siteConfig.plans);
+
+    useEffect(() => {
+        let isMounted = true;
+        const fetchPlans = async () => {
+            try {
+                const res = await getPlans();
+                // Assumes backend returns { data: { plans: [...] } } or direct array
+                const fetchedPlans = res?.data?.plans || res?.data || res;
+                if (isMounted && Array.isArray(fetchedPlans) && fetchedPlans.length > 0) {
+                    // Map API data if needed, or assume schema matches
+                    setPlans(fetchedPlans);
+                }
+            } catch (error) {
+                console.log('Using mock plans data (API fallback).');
+            }
+        };
+        fetchPlans();
+        return () => { isMounted = false; };
+    }, []);
 
     return (
         <section id="plans" className="section">
@@ -19,7 +41,7 @@ export default function Plans() {
                 </div>
 
                 <div className="plans__grid">
-                    {siteConfig.plans.map((plan, i) => (
+                    {plans.map((plan, i) => (
                         <motion.div
                             key={plan.id}
                             className={`plans__card card ${plan.highlighted ? 'plans__card--highlighted' : ''}`}

@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaCode, FaMobileAlt, FaServer, FaRobot, FaCloud, FaChartLine } from 'react-icons/fa';
 import siteConfig from '../../config/siteConfig';
+import { getServices } from '../../utils/api';
 import './Services.css';
 
 const iconMap = {
@@ -10,6 +12,24 @@ const iconMap = {
 
 export default function Services() {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+    const [services, setServices] = useState(siteConfig.services);
+
+    useEffect(() => {
+        let isMounted = true;
+        const fetchServices = async () => {
+            try {
+                const res = await getServices();
+                const fetchedServices = res?.data?.services || res?.data || res;
+                if (isMounted && Array.isArray(fetchedServices) && fetchedServices.length > 0) {
+                    setServices(fetchedServices);
+                }
+            } catch (error) {
+                console.log('Using mock services data (API fallback).');
+            }
+        };
+        fetchServices();
+        return () => { isMounted = false; };
+    }, []);
 
     return (
         <section id="services" className="section section--alt">
@@ -23,7 +43,7 @@ export default function Services() {
                 </div>
 
                 <div className="services__grid">
-                    {siteConfig.services.map((service, i) => {
+                    {services.map((service, i) => {
                         const Icon = iconMap[service.icon] || FaCode;
                         return (
                             <motion.div

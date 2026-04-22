@@ -1,17 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import siteConfig from '../../config/siteConfig';
+import { getPortfolio } from '../../utils/api';
 import './Portfolio.css';
 
 export default function Portfolio() {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
     const [filter, setFilter] = useState('Todos');
+    const [portfolio, setPortfolio] = useState(siteConfig.portfolio);
 
-    const categories = ['Todos', ...new Set(siteConfig.portfolio.map((p) => p.category))];
+    useEffect(() => {
+        let isMounted = true;
+        const fetchPortfolio = async () => {
+            try {
+                const res = await getPortfolio();
+                // Assume backend structure uses res.data.projects or direct array
+                const fetchedPortfolio = res?.data?.projects || res?.data || res;
+                if (isMounted && Array.isArray(fetchedPortfolio) && fetchedPortfolio.length > 0) {
+                    setPortfolio(fetchedPortfolio);
+                }
+            } catch (error) {
+                console.log('Using mock portfolio data (API fallback).');
+            }
+        };
+        fetchPortfolio();
+        return () => { isMounted = false; };
+    }, []);
+
+    const categories = ['Todos', ...new Set(portfolio.map((p) => p.category))];
     const filtered = filter === 'Todos'
-        ? siteConfig.portfolio
-        : siteConfig.portfolio.filter((p) => p.category === filter);
+        ? portfolio
+        : portfolio.filter((p) => p.category === filter);
 
     return (
         <section id="portfolio" className="section">

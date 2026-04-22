@@ -1,14 +1,32 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
 import siteConfig from '../../config/siteConfig';
+import { getTestimonials } from '../../utils/api';
 import './Testimonials.css';
 
 export default function Testimonials() {
     const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
     const [idx, setIdx] = useState(0);
-    const { testimonials } = siteConfig;
+    const [testimonials, setTestimonials] = useState(siteConfig.testimonials);
+
+    useEffect(() => {
+        let isMounted = true;
+        const fetchTestimonials = async () => {
+            try {
+                const res = await getTestimonials();
+                const fetchedTestimonials = res?.data?.testimonials || res?.data || res;
+                if (isMounted && Array.isArray(fetchedTestimonials) && fetchedTestimonials.length > 0) {
+                    setTestimonials(fetchedTestimonials);
+                }
+            } catch (error) {
+                console.log('Using mock testimonials data (API fallback).');
+            }
+        };
+        fetchTestimonials();
+        return () => { isMounted = false; };
+    }, []);
 
     const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
     const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));

@@ -46,7 +46,7 @@ const siteConfig = {
   contact: {
     email: 'contacto@Nuxelit.com',
     salesEmail: 'ventas@Nuxelit.com',
-    phone: '+57 300 123 4567',
+    phone: '+57 302 406 1472',
     phoneRaw: '573024061472',
     whatsapp: '573024061472',
     whatsappMessage: '¡Hola! Me interesa conocer más sobre sus servicios de desarrollo.',

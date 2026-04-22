@@ -92,14 +92,37 @@ export async function sendChatbotFeedback(sessionId, messageIndex, rating, comme
 export async function trackEvent(event, page = window.location.pathname, metadata = {}) {
     // Only track if base URL exists to avoid unnecessary errors when running pure front
     if (apiBase) {
-        // Fire and forget, don't wait or throw on tracker
-        fetch(`${apiBase}${apiEndpoints.analyticsEvent}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ event, page, metadata, sessionId: sessionStorage.getItem('nuxelit_session') }),
-        }).catch(() => {});
+        try {
+            // Fire and forget, don't wait or throw on tracker (adblockers might block this)
+            await fetch(`${apiBase}${apiEndpoints.analyticsEvent}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ event, page, metadata, sessionId: sessionStorage.getItem('nuxelit_session') }),
+            });
+        } catch (e) {
+            // Ignore ad-blocker blocked resource errors silently
+        }
     }
 }
+
+// ─── Dynamic Content Fetching ───
+
+export async function getPlans() {
+    return request(apiEndpoints.getPlans, { method: 'GET' });
+}
+
+export async function getServices() {
+    return request(apiEndpoints.getServices, { method: 'GET' });
+}
+
+export async function getPortfolio() {
+    return request(apiEndpoints.getPortfolio, { method: 'GET' });
+}
+
+export async function getTestimonials() {
+    return request(apiEndpoints.getTestimonials, { method: 'GET' });
+}
+
 
 export default { 
     submitQuote, 
@@ -109,5 +132,9 @@ export default {
     startChatbotSession,
     sendChatbotMessage,
     sendChatbotFeedback,
-    trackEvent
+    trackEvent,
+    getPlans,
+    getServices,
+    getPortfolio,
+    getTestimonials
 };
