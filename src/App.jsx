@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { applyTheme } from './styles/theme';
+import { trackEvent } from './utils/api';
 
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
@@ -19,6 +20,12 @@ import QuoteRequest from './components/sections/QuoteRequest';
 export default function App() {
     useEffect(() => {
         applyTheme();
+        
+        // Track page view once per session load
+        if (!sessionStorage.getItem('nuxelit_session')) {
+            sessionStorage.setItem('nuxelit_session', crypto.randomUUID());
+        }
+        trackEvent('page_view', window.location.pathname);
     }, []);
 
     return (

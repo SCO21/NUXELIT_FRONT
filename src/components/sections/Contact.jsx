@@ -18,7 +18,12 @@ export default function Contact() {
         e.preventDefault();
         setStatus('sending');
         try {
-            await submitContact(form);
+            // Map 'service' local state to 'subject' API requirement
+            const apiPayload = {
+                ...form,
+                subject: form.service || 'Contacto General',
+            };
+            await submitContact(apiPayload);
             setStatus('success');
             setForm({ name: '', email: '', phone: '', service: '', message: '' });
         } catch {

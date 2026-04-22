@@ -31,7 +31,13 @@ export default function QuoteRequest() {
         e.preventDefault();
         setStatus('sending');
         try {
-            await submitQuote(form);
+            const apiPayload = {
+                ...form,
+                projectDescription: form.projectDesc
+            };
+            delete apiPayload.projectDesc;
+            
+            await submitQuote(apiPayload);
             setStatus('success');
         } catch {
             setStatus('error');

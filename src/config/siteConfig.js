@@ -348,16 +348,22 @@ const siteConfig = {
     ],
   },
 
-  /* ───────── API Endpoints (future) ───────── */
+  /* ───────── API Endpoints ───────── */
   apiEndpoints: {
-    baseUrl: '', // Set when backend is ready
-    submitQuote: '/api/quotes',
-    submitContact: '/api/contact',
-    getPlans: '/api/plans',
-    getServices: '/api/services',
-    getPortfolio: '/api/portfolio',
-    chatbot: '/api/chatbot',
-    newsletter: '/api/newsletter',
+    baseUrl: import.meta.env?.VITE_API_URL || 'https://nuxelitback-production.up.railway.app/api/v1',
+    submitQuote: '/quotes',
+    submitContact: '/contact',
+    getPlans: '/plans',
+    getServices: '/services',
+    getPortfolio: '/portfolio',
+    getTestimonials: '/testimonials',
+    getSiteConfig: '/site-config',
+    chatbotSession: '/chatbot/session',
+    chatbotMessage: '/chatbot/message',
+    chatbotFeedback: '/chatbot/feedback',
+    newsletterSubscribe: '/newsletter/subscribe',
+    newsletterUnsubscribe: '/newsletter/unsubscribe',
+    analyticsEvent: '/analytics/event',
   },
 };
 
