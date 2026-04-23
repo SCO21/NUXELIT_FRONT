@@ -5,6 +5,7 @@ import { trackEvent } from './utils/api';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import WhatsAppFAB from './components/layout/WhatsAppFAB';
+import FloatingChatbot from './components/layout/FloatingChatbot';
 
 import Hero from './components/sections/Hero';
 import Services from './components/sections/Services';
@@ -45,6 +46,7 @@ export default function App() {
             </main>
             <Footer />
             <WhatsAppFAB />
+            <FloatingChatbot />
         </>
     );
 }
