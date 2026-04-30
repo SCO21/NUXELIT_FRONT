@@ -63,7 +63,7 @@ const siteConfig = {
 
   /* ───────── Navigation ───────── */
   navigation: [
-    { label: 'Iniciossss', href: '#hero' },
+    { label: 'Inicio', href: '#hero' },
     { label: 'Servicios', href: '#services' },
     { label: 'Planes', href: '#plans' },
     { label: 'IA & Chatbots', href: '#ai-showcase' },
