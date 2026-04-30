@@ -86,38 +86,3 @@
         height: 450px;
     }
 }
-
-.custom-blue-button {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background-color: rgba(30, 41, 59, 0.8);
-    backdrop-filter: blur(8px);
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    outline: none;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-    transition: all var(--transition-base, 0.3s ease);
-    margin-bottom: 0.8rem;
-    z-index: 1000;
-}
-
-.custom-blue-button:hover {
-    transform: scale(1.1);
-    background-color: rgba(51, 65, 85, 0.9);
-}
-
-.custom-blue-button.is-blue {
-    background-color: #2563eb; /* Modern vibrant blue */
-    box-shadow: 0 4px 20px rgba(37, 99, 235, 0.5);
-    border-color: rgba(255, 255, 255, 0.3);
-}
-
-.custom-blue-button__icon {
-    font-size: 1.2rem;
-}
-

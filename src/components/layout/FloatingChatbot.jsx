@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaRobot, FaTimes, FaPaperPlane, FaInfoCircle } from 'react-icons/fa';
+import { FaRobot, FaTimes, FaPaperPlane } from 'react-icons/fa';
 import siteConfig from '../../config/siteConfig';
 import { startChatbotSession, sendChatbotMessage } from '../../utils/api';
 import './FloatingChatbot.css';
@@ -15,7 +15,6 @@ export default function FloatingChatbot() {
     const [input, setInput] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isSessionStarted, setIsSessionStarted] = useState(false);
-    const [isBlue, setIsBlue] = useState(false);
 
     // Auto-scroll chat
     useEffect(() => {
@@ -122,13 +121,6 @@ export default function FloatingChatbot() {
                 )}
             </AnimatePresence>
 
-            <button 
-                className={`custom-blue-button ${isBlue ? 'is-blue' : ''}`} 
-                onClick={() => setIsBlue(!isBlue)}
-                aria-label="Botón azul"
-            >
-                <FaInfoCircle className="custom-blue-button__icon" />
-            </button>
 
             <button className="chatbot-fab" onClick={toggleChat} aria-label="Abrir chat">
                 <FaRobot className="chatbot-fab__icon" />
