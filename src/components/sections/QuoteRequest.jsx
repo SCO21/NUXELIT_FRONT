@@ -29,17 +29,32 @@ export default function QuoteRequest() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Final validation before sending
+        if (!form.name || !form.email) {
+            setStatus('error');
+            return;
+        }
+
         setStatus('sending');
         try {
             const apiPayload = {
-                ...form,
-                projectDescription: form.projectDesc
+                serviceType: form.serviceType,
+                projectDescription: form.projectDesc,
+                budget: form.budget,
+                timeline: form.timeline,
+                client: {
+                    name: form.name,
+                    email: form.email,
+                    phone: form.phone,
+                    company: form.company
+                }
             };
-            delete apiPayload.projectDesc;
             
             await submitQuote(apiPayload);
             setStatus('success');
-        } catch {
+        } catch (error) {
+            console.error('Error submitting quote:', error);
             setStatus('error');
         }
     };
