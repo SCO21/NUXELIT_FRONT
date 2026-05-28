@@ -17,6 +17,7 @@ import Testimonials from './components/sections/Testimonials';
 import TechStack from './components/sections/TechStack';
 import Contact from './components/sections/Contact';
 import QuoteRequest from './components/sections/QuoteRequest';
+import { SplineSceneBasic } from './components/demo';
 
 export default function App() {
     useEffect(() => {
@@ -34,6 +35,9 @@ export default function App() {
             <Navbar />
             <main>
                 <Hero />
+                <section className="container" style={{ padding: '4rem 1.5rem' }}>
+                    <SplineSceneBasic />
+                </section>
                 <Services />
                 <Stats />
                 <Plans />

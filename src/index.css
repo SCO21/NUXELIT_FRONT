@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
+/* Tailwind utilities only — base layer skipped to preserve existing reset/styles */
+@tailwind components;
+@tailwind utilities;
+
+/* shadcn CSS variables — used by bg-card, text-card-foreground, border, etc. */
+:root {
+  --card: 224 71% 4%;
+  --card-foreground: 213 31% 91%;
+  --border: 216 34% 17%;
+  --muted: 223 47% 11%;
+  --muted-foreground: 215.4 16.3% 56.9%;
+}
+
 /* ───────── CSS Custom Properties (overridden by theme.js at runtime) ───────── */
 :root {
   --color-primary: #6C3CE1;
