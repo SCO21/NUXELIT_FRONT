@@ -307,7 +307,7 @@
 }
 
 .code-bool {
-    color: #F97316;
+    color: var(--color-secondary);
 }
 
 .code-comment {
