@@ -3,7 +3,6 @@ import Lenis from 'lenis';
 import { applyTheme } from './styles/theme';
 import { trackEvent } from './utils/api';
 
-import { motion } from 'framer-motion';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import PageBackground from './components/layout/PageBackground';
@@ -17,14 +16,24 @@ import Services from './components/sections/Services';
 import Plans from './components/sections/Plans';
 import AIShowcase from './components/sections/AIShowcase';
 import Portfolio from './components/sections/Portfolio';
-import Stats from './components/sections/Stats';
 import Testimonials from './components/sections/Testimonials';
 import TechStack from './components/sections/TechStack';
 import Contact from './components/sections/Contact';
 import QuoteRequest from './components/sections/QuoteRequest';
 
+
 export default function App() {
     const [splashReady, setSplashReady] = useState(false);
+
+    useEffect(() => {
+        if (splashReady) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    document.body.classList.add('ui-ready');
+                });
+            });
+        }
+    }, [splashReady]);
 
     useEffect(() => {
         document.documentElement.style.overflow = splashReady ? '' : 'hidden';
@@ -38,13 +47,8 @@ export default function App() {
             wheelMultiplier: 0.9,
             touchMultiplier: 1.5,
         });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
         requestAnimationFrame(raf);
-
         return () => lenis.destroy();
     }, []);
 
@@ -56,21 +60,19 @@ export default function App() {
         trackEvent('page_view', window.location.pathname);
     }, []);
 
-    const fadeIn = (delay = 0) => ({
-        initial: { opacity: 0 },
-        animate: { opacity: splashReady ? 1 : 0 },
-        transition: { duration: 0.7, delay, ease: 'easeOut' },
-        style: { pointerEvents: splashReady ? 'auto' : 'none' },
-    });
-
     return (
         <>
             <SplashScreen onReady={() => setSplashReady(true)} />
             <PageBackground />
 
-            <motion.div {...fadeIn(0)}>
-                <Navbar />
-            </motion.div>
+            <Navbar />
+
+            <div style={{ position: 'fixed', top: '1rem', right: '1.4rem', zIndex: 1001 }} className="ui-fade ui-fade--1">
+                <ThemeToggle />
+            </div>
+
+            <WhatsAppFAB />
+            <FloatingChatbot />
 
             <main>
                 <GlowyWavesHero />
@@ -85,18 +87,6 @@ export default function App() {
             </main>
 
             <Footer />
-
-            <motion.div {...fadeIn(0.15)}>
-                <WhatsAppFAB />
-            </motion.div>
-            <motion.div {...fadeIn(0.3)}>
-                <FloatingChatbot />
-            </motion.div>
-
-            {/* Theme toggle — fixed top-right */}
-            <motion.div {...fadeIn(0.1)} style={{ ...fadeIn(0.1).style, position: 'fixed', top: '1rem', right: '1.4rem', zIndex: 1001 }}>
-                <ThemeToggle />
-            </motion.div>
         </>
     );
 }

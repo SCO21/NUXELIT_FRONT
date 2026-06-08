@@ -46,7 +46,7 @@ export default function Navbar() {
     };
 
     return (
-        <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
+        <nav className={`navbar ui-fade ui-fade--1 ${scrolled ? 'navbar--scrolled' : ''}`}>
             <div className="navbar__inner container">
                 <a href="#hero" className="navbar__logo" onClick={() => handleNavClick('#hero')}>
                     <img src={logoNgMr} alt="Nuxelit" className="navbar__logo-img" />
@@ -69,7 +69,8 @@ export default function Navbar() {
                                     <motion.div
                                         layoutId="tubelight"
                                         className="navbar__lamp"
-                                        initial={false}
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
                                         transition={{ type: 'spring', stiffness: 350, damping: 30 }}
                                     >
                                         {/* Tube glow bar */}

@@ -68,7 +68,7 @@ export default function FloatingChatbot() {
     };
 
     return (
-        <div className="floating-chatbot-container">
+        <div className="floating-chatbot-container ui-fade ui-fade--3">
             <AnimatePresence>
                 {isOpen && (
                     <motion.div 

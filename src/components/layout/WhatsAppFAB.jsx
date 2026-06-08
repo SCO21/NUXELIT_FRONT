@@ -9,7 +9,7 @@ export default function WhatsAppFAB() {
     return (
         <a
             href={url}
-            className="whatsapp-fab"
+            className="whatsapp-fab ui-fade ui-fade--2"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Contactar por WhatsApp"
