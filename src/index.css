@@ -53,6 +53,46 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-gutter: stable;
+}
+
+/* ───────── Custom Scrollbar ───────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 45, 225, 0.0) 0%,
+    rgba(99, 45, 225, 0.5) 30%,
+    rgba(126, 81, 248, 0.7) 60%,
+    rgba(99, 45, 225, 0.5) 85%,
+    rgba(99, 45, 225, 0.0) 100%
+  );
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 45, 225, 0.0) 0%,
+    rgba(126, 81, 248, 0.75) 25%,
+    rgba(160, 120, 255, 0.9) 55%,
+    rgba(126, 81, 248, 0.75) 80%,
+    rgba(99, 45, 225, 0.0) 100%
+  );
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 45, 225, 0.45) transparent;
 }
 
 body {
@@ -98,13 +138,18 @@ h1,h2,h3,h4,h5,h6 {
   padding: 0 var(--container-padding);
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .section {
   padding: 6rem 0;
   position: relative;
 }
 
 .section--alt {
-  background: var(--color-background-light);
+  background: transparent;
 }
 
 /* ───────── Glassmorphism ───────── */

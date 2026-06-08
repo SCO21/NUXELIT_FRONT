@@ -14,18 +14,14 @@ export default function AIShowcase() {
     return (
         <section id="ai-showcase" className="section section--alt">
             <div className="container" ref={ref}>
-                <div className="ai__header">
-                    <div className="ai__header-text">
-                        <span className="badge">IA & Chatbots</span>
-                        <h2 className="section-title">Potencia tu negocio con Inteligencia Artificial</h2>
-                        <p className="ai__header-desc">
-                            Integramos módulos de IA de última generación en tus proyectos. Desde chatbots inteligentes hasta analítica predictiva, transformamos datos en decisiones.
-                        </p>
-                        <a href="#quote" className="btn btn-primary">
-                            Integrar IA en mi proyecto <FaArrowRight />
-                        </a>
-                    </div>
-
+                <div style={{ textAlign: 'center' }}>
+                    <h2 className="section-title">IA integrada en tu producto</h2>
+                    <p className="section-subtitle">
+                        Integramos soluciones de IA directamente en tus flujos de trabajo, desde asistentes conversacionales hasta modelos predictivos, para que tomes mejores decisiones en menos tiempo.
+                    </p>
+                    <a href="#quote" className="btn btn-primary" style={{ marginBottom: '3rem', display: 'inline-flex' }}>
+                        Integrar IA en mi proyecto <FaArrowRight />
+                    </a>
                 </div>
 
                 {/* AI Module Cards */}

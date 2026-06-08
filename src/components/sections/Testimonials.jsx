@@ -1,102 +1,124 @@
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useInView } from 'react-intersection-observer';
-import { FaStar, FaChevronLeft, FaChevronRight, FaQuoteLeft } from 'react-icons/fa';
+import { useState } from 'react';
+import { motion } from 'framer-motion';
+import { FaStar } from 'react-icons/fa';
 import siteConfig from '../../config/siteConfig';
-import { getTestimonials } from '../../utils/api';
 import './Testimonials.css';
 
+const AVATARS = [
+    'https://randomuser.me/api/portraits/women/44.jpg',
+    'https://randomuser.me/api/portraits/men/32.jpg',
+    'https://randomuser.me/api/portraits/women/68.jpg',
+];
+
 export default function Testimonials() {
-    const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
-    const [idx, setIdx] = useState(0);
-    const [testimonials, setTestimonials] = useState(siteConfig.testimonials);
+    const testimonials = siteConfig.testimonials.map((t, i) => ({
+        ...t,
+        id: i,
+        avatar: AVATARS[i % AVATARS.length],
+    }));
 
-    useEffect(() => {
-        let isMounted = true;
-        const fetchTestimonials = async () => {
-            try {
-                const res = await getTestimonials();
-                const fetchedTestimonials = res?.data?.testimonials || res?.data || res;
-                if (isMounted && Array.isArray(fetchedTestimonials) && fetchedTestimonials.length > 0) {
-                    setTestimonials(fetchedTestimonials);
-                }
-            } catch (error) {
-                console.log('Using mock testimonials data (API fallback).');
-            }
-        };
-        fetchTestimonials();
-        return () => { isMounted = false; };
-    }, []);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [exitX, setExitX] = useState(0);
 
-    const prev = () => setIdx((i) => (i === 0 ? testimonials.length - 1 : i - 1));
-    const next = () => setIdx((i) => (i === testimonials.length - 1 ? 0 : i + 1));
-    const t = testimonials[idx];
+    const handleDragEnd = (_, info) => {
+        if (Math.abs(info.offset.x) > 80) {
+            const dir = info.offset.x > 0 ? 1 : -1;
+            setExitX(info.offset.x);
+            setTimeout(() => {
+                setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+                setExitX(0);
+            }, 200);
+        }
+    };
+
+    const next = () => {
+        setExitX(-200);
+        setTimeout(() => {
+            setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+            setExitX(0);
+        }, 200);
+    };
+
+    const prev = () => {
+        setExitX(200);
+        setTimeout(() => {
+            setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+            setExitX(0);
+        }, 200);
+    };
 
     return (
         <section className="section section--alt" id="testimonials">
-            <div className="container" ref={ref}>
-                <div style={{ textAlign: 'center' }}>
-                    <span className="badge">Testimonios</span>
-                    <h2 className="section-title">Lo que dicen nuestros clientes</h2>
-                    <p className="section-subtitle">
-                        La confianza de nuestros clientes es nuestro mayor logro. Descubre sus experiencias.
-                    </p>
-                </div>
+            <div className="container">
+                <div className="tcarousel__wrap">
+                    {/* Stack de cartas */}
+                    <div className="tcarousel__stack-area">
+                        <div className="tcarousel__stack">
+                            {testimonials.map((t, index) => {
+                                const isTop    = index === currentIndex;
+                                const isMid    = index === (currentIndex + 1) % testimonials.length;
+                                const isBottom = index === (currentIndex + 2) % testimonials.length;
 
-                <motion.div
-                    className="testimonials__slider"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={inView ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.5 }}
-                >
-                    <button className="testimonials__arrow testimonials__arrow--left" onClick={prev} aria-label="Previous">
-                        <FaChevronLeft />
-                    </button>
+                                if (!isTop && !isMid && !isBottom) return null;
 
-                    <div className="testimonials__content glass">
-                        <FaQuoteLeft className="testimonials__quote-icon" />
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={idx}
-                                initial={{ opacity: 0, x: 30 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -30 }}
-                                transition={{ duration: 0.3 }}
-                                className="testimonials__body"
-                            >
-                                <p className="testimonials__text">{t.text}</p>
-                                <div className="testimonials__author">
-                                    <div className="testimonials__avatar">
-                                        {t.name.charAt(0)}
-                                    </div>
-                                    <div>
-                                        <strong className="testimonials__name">{t.name}</strong>
-                                        <span className="testimonials__role">{t.role} — {t.company}</span>
-                                    </div>
-                                </div>
-                                <div className="testimonials__stars">
-                                    {Array.from({ length: t.rating }).map((_, i) => (
-                                        <FaStar key={i} className="testimonials__star" />
-                                    ))}
-                                </div>
-                            </motion.div>
-                        </AnimatePresence>
+                                return (
+                                    <motion.div
+                                        key={t.id}
+                                        className="tcarousel__card"
+                                        style={{ zIndex: isTop ? 3 : isMid ? 2 : 1 }}
+                                        drag={isTop ? 'x' : false}
+                                        dragConstraints={{ left: 0, right: 0 }}
+                                        dragElastic={0.6}
+                                        onDragEnd={isTop ? handleDragEnd : undefined}
+                                        animate={{
+                                            scale:   isTop ? 1 : isMid ? 0.95 : 0.90,
+                                            opacity: isTop ? 1 : isMid ? 0.6  : 0.3,
+                                            x:       isTop ? exitX : 0,
+                                            y:       isTop ? 0 : isMid ? 10 : 20,
+                                            rotate:  isTop ? exitX / 22 : isMid ? -2 : -4,
+                                        }}
+                                        transition={{ type: 'spring', stiffness: 280, damping: 22 }}
+                                    >
+                                        {/* Arrows on top card */}
+                                        {isTop && (
+                                            <div className="tcarousel__card-arrows">
+                                                <button onClick={prev} className="tcarousel__card-arrow" aria-label="Anterior">&#8592;</button>
+                                                <button onClick={next} className="tcarousel__card-arrow" aria-label="Siguiente">&#8594;</button>
+                                            </div>
+                                        )}
+
+                                        <div className="tcarousel__card-body">
+                                            <img
+                                                src={t.avatar}
+                                                alt={t.name}
+                                                className="tcarousel__avatar"
+                                            />
+                                            <strong className="tcarousel__name">{t.name}</strong>
+                                            <span className="tcarousel__role">{t.role} · {t.company}</span>
+                                            <div className="tcarousel__stars">
+                                                {Array.from({ length: t.rating }).map((_, i) => (
+                                                    <FaStar key={i} className="tcarousel__star" />
+                                                ))}
+                                            </div>
+                                            <p className="tcarousel__text">"{t.text}"</p>
+                                        </div>
+                                    </motion.div>
+                                );
+                            })}
+                        </div>
+
+                        {/* Dots */}
+                        <div className="tcarousel__dots">
+                            {testimonials.map((_, i) => (
+                                <button
+                                    key={i}
+                                    className={`tcarousel__dot${i === currentIndex ? ' tcarousel__dot--active' : ''}`}
+                                    onClick={() => setCurrentIndex(i)}
+                                    aria-label={`Testimonio ${i + 1}`}
+                                />
+                            ))}
+                        </div>
                     </div>
-
-                    <button className="testimonials__arrow testimonials__arrow--right" onClick={next} aria-label="Next">
-                        <FaChevronRight />
-                    </button>
-                </motion.div>
-
-                <div className="testimonials__dots">
-                    {testimonials.map((_, i) => (
-                        <button
-                            key={i}
-                            className={`testimonials__dot ${i === idx ? 'testimonials__dot--active' : ''}`}
-                            onClick={() => setIdx(i)}
-                            aria-label={`Testimonial ${i + 1}`}
-                        />
-                    ))}
                 </div>
             </div>
         </section>

@@ -37,10 +37,9 @@ export default function Portfolio() {
         <section id="portfolio" className="section">
             <div className="container" ref={ref}>
                 <div style={{ textAlign: 'center' }}>
-                    <span className="badge">Portafolio</span>
-                    <h2 className="section-title">Proyectos destacados</h2>
+                    <h2 className="section-title">Proyectos recientes</h2>
                     <p className="section-subtitle">
-                        Cada proyecto es una historia de innovación. Conoce cómo hemos ayudado a empresas a transformarse digitalmente.
+                        Una selección de los productos que hemos diseñado, desarrollado y lanzado junto a nuestros clientes.
                     </p>
                 </div>
 

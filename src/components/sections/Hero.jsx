@@ -11,28 +11,6 @@ export default function Hero() {
 
     return (
         <section id="hero" className="hero">
-            {/* Animated background elements */}
-            <div className="hero__bg">
-                <div className="hero__orb hero__orb--1" />
-                <div className="hero__orb hero__orb--2" />
-                <div className="hero__orb hero__orb--3" />
-                <div className="hero__grid-bg" />
-                {/* Decorative circuit lines */}
-                <svg className="hero__circuit" viewBox="0 0 1200 800" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M0 400 H200 L250 350 H450 L500 400 H700" stroke="url(#heroCircuitGrad)" strokeWidth="1" opacity="0.12" />
-                    <path d="M600 0 V200 L650 250 V450 L600 500 V800" stroke="url(#heroCircuitGrad)" strokeWidth="1" opacity="0.08" />
-                    <path d="M900 100 H1100 L1150 150 H1200" stroke="url(#heroCircuitGrad)" strokeWidth="1" opacity="0.1" />
-                    <circle cx="200" cy="400" r="3" fill="var(--color-primary)" opacity="0.3" />
-                    <circle cx="500" cy="400" r="3" fill="var(--color-secondary)" opacity="0.3" />
-                    <circle cx="650" cy="250" r="3" fill="var(--color-accent)" opacity="0.3" />
-                    <defs>
-                        <linearGradient id="heroCircuitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                            <stop offset="0%" stopColor="var(--color-primary)" />
-                            <stop offset="100%" stopColor="var(--color-secondary)" />
-                        </linearGradient>
-                    </defs>
-                </svg>
-            </div>
 
             <div className="container hero__container">
                 <motion.div
@@ -113,8 +91,12 @@ export default function Hero() {
                     {/* Branded visual — Logo showcase with floating tech keywords */}
                     <div className="hero__brand-visual">
                         <div className="hero__logo-glow" />
-                        <LogoMark size={120} className="hero__logo-main" />
-                        <span className="hero__brand-name">{company.name}</span>
+                        <img
+                            src="/images/logos/hero-logo.png"
+                            alt="Nuxelit Logo"
+                            className="hero__logo-main"
+                            style={{ width: '170px', height: 'auto', objectFit: 'contain' }}
+                        />
 
                         {/* Floating tech keywords */}
                         {floatingKeywords.map((kw, i) => (

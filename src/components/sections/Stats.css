@@ -1,6 +1,6 @@
 .stats {
     padding: 4rem 0;
-    background: var(--color-background-light);
+    background: transparent;
     border-top: 1px solid var(--color-border);
     border-bottom: 1px solid var(--color-border);
 }

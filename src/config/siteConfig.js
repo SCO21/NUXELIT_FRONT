@@ -277,7 +277,7 @@ const siteConfig = {
 
   /* ───────── Stats ───────── */
   stats: [
-    { label: 'Proyectos Entregados', value: 150, suffix: '+' },
+    { label: 'Proyectos', value: 150, suffix: '+' },
     { label: 'Clientes Satisfechos', value: 80, suffix: '+' },
     { label: 'Años de Experiencia', value: 6, suffix: '' },
     { label: 'Tecnologías', value: 40, suffix: '+' },
