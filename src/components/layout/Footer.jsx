@@ -1,92 +1,76 @@
-import { FaLinkedinIn, FaGithub, FaTwitter, FaInstagram, FaYoutube, FaEnvelope, FaPhone, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp } from 'react-icons/fa';
+import { MdEmail } from 'react-icons/md';
 import siteConfig from '../../config/siteConfig';
-import LogoMark from '../brand/LogoMark';
+import logoImg from '../../assets/logo_versions/Isotipo - BlMo.png';
 import './Footer.css';
 
-const socialIcons = {
-    linkedin: FaLinkedinIn,
-    github: FaGithub,
-    twitter: FaTwitter,
-    instagram: FaInstagram,
-    youtube: FaYoutube,
-};
-
 export default function Footer() {
-    const { company, contact, navigation, services } = siteConfig;
+    const { company, contact, navigation } = siteConfig;
     const year = new Date().getFullYear();
+
+    const socialLinks = [
+        { Icon: MdEmail,      href: `mailto:${contact.email}`,       label: 'Email'     },
+        { Icon: FaWhatsapp,   href: `https://wa.me/${contact.whatsapp}?text=${encodeURIComponent(contact.whatsappMessage)}`, label: 'WhatsApp', target: '_blank' },
+        { Icon: FaLinkedinIn, href: contact.social.linkedin,          label: 'LinkedIn'  },
+        { Icon: FaGithub,     href: contact.social.github,            label: 'GitHub'    },
+        { Icon: FaInstagram,  href: contact.social.instagram,         label: 'Instagram' },
+    ];
+
+    const mainLinks = navigation.map(item => ({ href: item.href, label: item.label }));
+
+    const legalLinks = [
+        { href: '#privacy', label: 'Política de Privacidad' },
+        { href: '#terms',   label: 'Términos y Condiciones' },
+    ];
 
     return (
         <footer className="footer">
             <div className="container">
-                <div className="footer__grid">
-                    {/* Brand */}
-                    <div className="footer__brand">
-                        <div className="footer__logo">
-                            <LogoMark size={30} />
-                            <span className="footer__logo-text">{company.name}</span>
-                        </div>
-                        <p className="footer__desc">{company.description}</p>
-                        <div className="footer__socials">
-                            {Object.entries(contact.social).map(([key, url]) => {
-                                const Icon = socialIcons[key];
-                                return Icon ? (
-                                    <a key={key} href={url} className="footer__social" target="_blank" rel="noopener noreferrer" aria-label={key}>
-                                        <Icon />
-                                    </a>
-                                ) : null;
-                            })}
-                        </div>
-                    </div>
-
-                    {/* Navigation */}
-                    <div className="footer__col">
-                        <h4 className="footer__heading">Navegación</h4>
-                        <ul className="footer__list">
-                            {navigation.map((item) => (
-                                <li key={item.href}>
-                                    <a href={item.href} className="footer__link">{item.label}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Services */}
-                    <div className="footer__col">
-                        <h4 className="footer__heading">Servicios</h4>
-                        <ul className="footer__list">
-                            {services.slice(0, 6).map((s) => (
-                                <li key={s.id}>
-                                    <a href="#services" className="footer__link">{s.title}</a>
-                                </li>
-                            ))}
-                        </ul>
-                    </div>
-
-                    {/* Contact */}
-                    <div className="footer__col">
-                        <h4 className="footer__heading">Contacto</h4>
-                        <ul className="footer__list footer__list--contact">
-                            <li>
-                                <FaEnvelope className="footer__icon" />
-                                <a href={`mailto:${contact.email}`} className="footer__link">{contact.email}</a>
+                {/* Top row — logo + socials */}
+                <div className="footer__top">
+                    <a href="#hero" className="footer__brand" aria-label={company.name}>
+                        <img src={logoImg} alt={company.name} className="footer__logo-img" />
+                        <span className="footer__brand-name">{company.name}</span>
+                    </a>
+                    <ul className="footer__socials">
+                        {socialLinks.map(({ Icon, href, label }) => (
+                            <li key={label}>
+                                <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="footer__social">
+                                    <Icon size={16} />
+                                </a>
                             </li>
-                            <li>
-                                <FaPhone className="footer__icon" />
-                                <a href={`tel:${contact.phoneRaw}`} className="footer__link">{contact.phone}</a>
-                            </li>
-                            <li>
-                                <FaMapMarkerAlt className="footer__icon" />
-                                <span className="footer__link">{contact.address}</span>
-                            </li>
-                        </ul>
-                    </div>
+                        ))}
+                    </ul>
                 </div>
 
-                <div className="footer__bottom">
-                    <p>© {year} {company.name}. Todos los derechos reservados.</p>
-                    <div className="footer__bottom-links">
-                        <a href="#privacy">Política de Privacidad</a>
-                        <a href="#terms">Términos y Condiciones</a>
+                {/* Divider + bottom rows */}
+                <div className="footer__bottom-wrap">
+                    {/* Main nav links */}
+                    <nav className="footer__main-links">
+                        <ul>
+                            {mainLinks.map(link => (
+                                <li key={link.href}>
+                                    <a href={link.href} className="footer__main-link">{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </nav>
+
+                    {/* Legal links */}
+                    <div className="footer__legal-links">
+                        <ul>
+                            {legalLinks.map(link => (
+                                <li key={link.href}>
+                                    <a href={link.href} className="footer__legal-link">{link.label}</a>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Copyright */}
+                    <div className="footer__copy">
+                        <p>© {year} {company.name}</p>
+                        <p>Todos los derechos reservados.</p>
                     </div>
                 </div>
             </div>

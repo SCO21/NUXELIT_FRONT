@@ -2,26 +2,26 @@
 
 /* ───────── CSS Custom Properties (overridden by theme.js at runtime) ───────── */
 :root {
-  --color-primary: #6C3CE1;
-  --color-primary-light: #8B5CF6;
-  --color-primary-dark: #5B21B6;
-  --color-secondary: #0EA5E9;
-  --color-secondary-light: #38BDF8;
-  --color-accent: #F97316;
-  --color-accent-light: #FB923C;
-  --color-background: #0B0F1A;
-  --color-background-light: #111827;
-  --color-background-card: #1A1F35;
-  --color-surface: #1E293B;
-  --color-text: #F1F5F9;
-  --color-text-secondary: #94A3B8;
-  --color-text-muted: #64748B;
-  --color-border: #334155;
+  --color-primary: #632de1;
+  --color-primary-light: #7e51f8;
+  --color-primary-dark: #4b1db3;
+  --color-secondary: #3a36e4;
+  --color-secondary-light: #5a57f2;
+  --color-accent: #3a36e4;
+  --color-accent-light: #5a57f2;
+  --color-background: #0b0d11;
+  --color-background-light: #131519;
+  --color-background-card: #131519;
+  --color-surface: #2a2d32;
+  --color-text: #e0e1e7;
+  --color-text-secondary: #9ea0b1;
+  --color-text-muted: #6e7081;
+  --color-border: #35383e;
   --color-success: #10B981;
   --color-warning: #F59E0B;
   --color-error: #EF4444;
-  --color-gradient: linear-gradient(135deg, #6C3CE1 0%, #0EA5E9 50%, #F97316 100%);
-  --color-gradient-subtle: linear-gradient(135deg, #6C3CE1 0%, #0EA5E9 100%);
+  --color-gradient: linear-gradient(135deg, #632de1 0%, #4f4cf1 50%, #3a36e4 100%);
+  --color-gradient-subtle: linear-gradient(135deg, #632de1 0%, #3a36e4 100%);
 
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Space Grotesk', 'Inter', sans-serif;
@@ -35,7 +35,7 @@
   --shadow-sm: 0 2px 8px rgba(0,0,0,0.15);
   --shadow-md: 0 4px 20px rgba(0,0,0,0.25);
   --shadow-lg: 0 8px 40px rgba(0,0,0,0.35);
-  --shadow-glow: 0 0 30px rgba(108,60,225,0.3);
+  --shadow-glow: 0 0 30px rgba(99,45,225,0.3);
 
   --transition-fast: 0.2s cubic-bezier(0.4,0,0.2,1);
   --transition-base: 0.3s cubic-bezier(0.4,0,0.2,1);
@@ -53,6 +53,46 @@ html {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scrollbar-gutter: stable;
+}
+
+/* ───────── Custom Scrollbar ───────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 45, 225, 0.0) 0%,
+    rgba(99, 45, 225, 0.5) 30%,
+    rgba(126, 81, 248, 0.7) 60%,
+    rgba(99, 45, 225, 0.5) 85%,
+    rgba(99, 45, 225, 0.0) 100%
+  );
+  border-radius: 999px;
+  transition: background 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    180deg,
+    rgba(99, 45, 225, 0.0) 0%,
+    rgba(126, 81, 248, 0.75) 25%,
+    rgba(160, 120, 255, 0.9) 55%,
+    rgba(126, 81, 248, 0.75) 80%,
+    rgba(99, 45, 225, 0.0) 100%
+  );
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 45, 225, 0.45) transparent;
 }
 
 body {
@@ -98,13 +138,18 @@ h1,h2,h3,h4,h5,h6 {
   padding: 0 var(--container-padding);
 }
 
+main {
+  position: relative;
+  z-index: 1;
+}
+
 .section {
   padding: 6rem 0;
   position: relative;
 }
 
 .section--alt {
-  background: var(--color-background-light);
+  background: transparent;
 }
 
 /* ───────── Glassmorphism ───────── */

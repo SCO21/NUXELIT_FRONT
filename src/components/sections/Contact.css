@@ -1,88 +1,105 @@
-.contact__grid {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 2.5rem;
-    align-items: start;
-}
-
-.contact__channels {
+/* ── Form container ── */
+.contact__form {
+    max-width: 560px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
+    gap: 1.25rem;
 }
 
-.contact__channel {
+/* ── Field wrapper ── */
+.cfield {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1.2rem 1.5rem;
+    flex-direction: column;
+    gap: 0.45rem;
 }
 
-.contact__channel strong {
-    display: block;
-    font-size: 0.9rem;
-}
-
-.contact__channel span {
-    font-size: 0.85rem;
-    color: var(--color-text-secondary);
-}
-
-.contact__channel-icon {
-    font-size: 1.3rem;
-    color: var(--color-primary-light);
-    flex-shrink: 0;
-}
-
-.contact__channel--whatsapp .contact__channel-icon {
-    color: #25D366;
-}
-
-.contact__social-row {
-    display: flex;
-    gap: 0.8rem;
-}
-
-.contact__social-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.7rem 1.2rem;
-    border-radius: var(--radius-full);
-    background: var(--color-surface);
-    border: 1px solid var(--color-border);
-    color: var(--color-text-secondary);
-    font-size: 0.85rem;
+.cfield__label {
+    font-size: 0.83rem;
     font-weight: 500;
-    transition: all var(--transition-fast);
+    color: var(--color-text);
 }
 
-.contact__social-btn:hover {
-    border-color: var(--color-primary);
-    color: var(--color-primary-light);
+/* The styled shell — mimics the component's <span> wrapper */
+.cfield__control {
+    position: relative;
+    display: inline-flex;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.04);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Form */
-.contact__form {
-    padding: 2.5rem;
+.cfield__control::before {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: 9px;
+    box-shadow: inset 0 -1px rgba(255, 255, 255, 0.04);
 }
 
-.contact__form-title {
-    font-size: 1.3rem;
-    margin-bottom: 1.5rem;
+.cfield__control:has(input:focus),
+.cfield__control:has(textarea:focus) {
+    border-color: rgba(99, 45, 225, 0.6);
+    box-shadow: 0 0 0 3px rgba(99, 45, 225, 0.15);
 }
 
-.contact__form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 1rem;
+.cfield__control:has(input:focus)::before,
+.cfield__control:has(textarea:focus)::before {
+    box-shadow: none;
 }
 
+/* Input */
+.cfield__input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.6rem 0.85rem;
+    font-size: 0.88rem;
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    border-radius: inherit;
+}
+
+.cfield__input::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Textarea */
+.cfield__textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.88rem;
+    font-family: var(--font-primary);
+    color: var(--color-text);
+    border-radius: inherit;
+    resize: vertical;
+    min-height: 130px;
+    line-height: 1.6;
+    field-sizing: content;
+}
+
+.cfield__textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+/* Submit */
+.contact__submit {
+    width: 100%;
+    margin-top: 0.25rem;
+}
+
+/* Status messages */
 .contact__status {
     text-align: center;
-    font-size: 0.9rem;
-    margin-top: 1rem;
+    font-size: 0.88rem;
+    margin-top: 0.5rem;
     padding: 0.6rem;
     border-radius: var(--radius-sm);
 }
@@ -95,20 +112,4 @@
 .contact__status--error {
     background: rgba(239, 68, 68, 0.1);
     color: var(--color-error);
-}
-
-@media (max-width: 1024px) {
-    .contact__grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 640px) {
-    .contact__form {
-        padding: 1.5rem;
-    }
-
-    .contact__form-grid {
-        grid-template-columns: 1fr;
-    }
 }

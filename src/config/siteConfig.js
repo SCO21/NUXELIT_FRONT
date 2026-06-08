@@ -20,26 +20,26 @@ const siteConfig = {
 
   /* ───────── Theme / Colors ───────── */
   theme: {
-    primary: '#6C3CE1',       // Purple
-    primaryLight: '#8B5CF6',
-    primaryDark: '#5B21B6',
-    secondary: '#0EA5E9',     // Cyan
-    secondaryLight: '#38BDF8',
-    accent: '#F97316',        // Orange
-    accentLight: '#FB923C',
-    background: '#0B0F1A',    // Deep dark
-    backgroundLight: '#111827',
-    backgroundCard: '#1A1F35',
-    surface: '#1E293B',
-    text: '#F1F5F9',
-    textSecondary: '#94A3B8',
-    textMuted: '#64748B',
-    border: '#334155',
+    primary: '#632de1',       // Purple
+    primaryLight: '#7e51f8',
+    primaryDark: '#4b1db3',
+    secondary: '#3a36e4',     // Blue
+    secondaryLight: '#5a57f2',
+    accent: '#3a36e4',
+    accentLight: '#5a57f2',
+    background: '#0b0d11',    // Dark Background from palette
+    backgroundLight: '#131519',
+    backgroundCard: '#131519',
+    surface: '#2a2d32',
+    text: '#e0e1e7',          // Text color from palette
+    textSecondary: '#9ea0b1',
+    textMuted: '#6e7081',
+    border: '#35383e',
     success: '#10B981',
     warning: '#F59E0B',
     error: '#EF4444',
-    gradient: 'linear-gradient(135deg, #6C3CE1 0%, #0EA5E9 50%, #F97316 100%)',
-    gradientSubtle: 'linear-gradient(135deg, #6C3CE1 0%, #0EA5E9 100%)',
+    gradient: 'linear-gradient(135deg, #632de1 0%, #4f4cf1 50%, #3a36e4 100%)',
+    gradientSubtle: 'linear-gradient(135deg, #632de1 0%, #3a36e4 100%)',
   },
 
   /* ───────── Contact Info ───────── */
@@ -277,7 +277,7 @@ const siteConfig = {
 
   /* ───────── Stats ───────── */
   stats: [
-    { label: 'Proyectos Entregados', value: 150, suffix: '+' },
+    { label: 'Proyectos', value: 150, suffix: '+' },
     { label: 'Clientes Satisfechos', value: 80, suffix: '+' },
     { label: 'Años de Experiencia', value: 6, suffix: '' },
     { label: 'Tecnologías', value: 40, suffix: '+' },

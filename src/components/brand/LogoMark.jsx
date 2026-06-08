@@ -16,13 +16,13 @@ export default function LogoMark({ size = 36, className = '' }) {
     >
       <defs>
         <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="var(--color-primary, #6C3CE1)" />
-          <stop offset="50%" stopColor="var(--color-secondary, #0EA5E9)" />
-          <stop offset="100%" stopColor="var(--color-accent, #F97316)" />
+          <stop offset="0%" stopColor="var(--color-primary, #632de1)" />
+          <stop offset="50%" stopColor="var(--color-secondary, #3a36e4)" />
+          <stop offset="100%" stopColor="var(--color-accent, #3a36e4)" />
         </linearGradient>
         <linearGradient id="logoGradSubtle" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="var(--color-primary, #6C3CE1)" />
-          <stop offset="100%" stopColor="var(--color-secondary, #0EA5E9)" />
+          <stop offset="0%" stopColor="var(--color-primary, #632de1)" />
+          <stop offset="100%" stopColor="var(--color-secondary, #3a36e4)" />
         </linearGradient>
       </defs>
 

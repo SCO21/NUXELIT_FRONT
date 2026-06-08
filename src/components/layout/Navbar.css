@@ -9,19 +9,13 @@
 }
 
 .navbar--scrolled {
-    background: rgba(11, 15, 26, 0.85);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding: 0.6rem 0;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 
 .navbar__inner {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
 }
 
 .navbar__logo {
@@ -31,39 +25,112 @@
     font-family: var(--font-display);
     font-weight: 700;
     font-size: 1.4rem;
-    z-index: 10;
+    text-decoration: none;
+    flex-shrink: 0;
 }
 
-.navbar__logo-icon {
-    background: var(--color-gradient-subtle);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    font-size: 1.6rem;
-    font-weight: 800;
+.navbar__logo-img {
+    height: 32px;
+    width: auto;
+    object-fit: contain;
+    display: block;
 }
 
 .navbar__logo-text {
     color: var(--color-text);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
-.navbar__links {
+
+/* ── Tubelight pill nav ── */
+.navbar__pill {
     display: flex;
-    gap: 0.3rem;
+    align-items: center;
+    gap: 0;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 999px;
+    padding: 0.25rem;
 }
 
-.navbar__link {
-    padding: 0.5rem 0.9rem;
-    font-size: 0.88rem;
+.navbar__pill-link {
+    position: relative;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.83rem;
     font-weight: 500;
-    color: var(--color-text-secondary);
-    border-radius: var(--radius-sm);
-    transition: all var(--transition-fast);
+    color: rgba(224, 225, 231, 0.55);
+    border-radius: 999px;
+    transition: color 0.2s ease;
+    white-space: nowrap;
+    text-decoration: none;
+    overflow: visible;
 }
 
-.navbar__link:hover {
-    color: var(--color-text);
-    background: rgba(255, 255, 255, 0.06);
+.navbar__pill-link:hover {
+    color: rgba(224, 225, 231, 0.9);
+}
+
+.navbar__pill-link--active {
+    color: #ffffff;
+}
+
+/* Lamp indicator (sits inside the link, z-index behind text) */
+.navbar__lamp {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    background: rgba(99, 45, 225, 0.12);
+    z-index: -1;
+}
+
+/* The glowing bar at the top edge of the active pill */
+.navbar__lamp-bar {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2rem;
+    height: 3px;
+    background: var(--color-primary);
+    border-radius: 0 0 4px 4px;
+}
+
+.navbar__lamp-glow {
+    position: absolute;
+    border-radius: 999px;
+    background: rgba(99, 45, 225, 0.25);
+    filter: blur(6px);
+}
+
+.navbar__lamp-glow--wide {
+    width: 3rem;
+    height: 1.5rem;
+    top: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(10px);
+}
+
+.navbar__lamp-glow--mid {
+    width: 2rem;
+    height: 1.5rem;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(8px);
+}
+
+.navbar__lamp-glow--tight {
+    width: 1rem;
+    height: 1rem;
+    top: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: blur(4px);
 }
 
 .navbar__cta {
@@ -115,10 +182,13 @@
     color: var(--color-text);
 }
 
-@media (max-width: 1024px) {
+.navbar__mobile-link--active {
+    color: var(--color-text);
+    background: rgba(99, 45, 225, 0.15);
+}
 
-    .navbar__links,
-    .navbar__cta {
+@media (max-width: 1024px) {
+    .navbar__pill {
         display: none;
     }
 

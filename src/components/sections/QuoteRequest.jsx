@@ -65,10 +65,9 @@ export default function QuoteRequest() {
         <section id="quote" className="section">
             <div className="container" ref={ref}>
                 <div style={{ textAlign: 'center' }}>
-                    <span className="badge">Cotización</span>
-                    <h2 className="section-title">Solicita tu cotización</h2>
+                    <h2 className="section-title">Solicita una propuesta</h2>
                     <p className="section-subtitle">
-                        Completa el formulario y te enviaremos una propuesta personalizada en menos de 24 horas.
+                        Completa el formulario con los detalles de tu proyecto y te enviamos una propuesta detallada en menos de 24 horas.
                     </p>
                 </div>
 

@@ -2,16 +2,34 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import siteConfig from '../../config/siteConfig';
-import LogoMark from '../brand/LogoMark';
+import logoNgMr from '../../assets/logo_versions/Isotipo - BlMo.png';
+import { ThemeToggle } from '../ui/ThemeToggle';
 import './Navbar.css';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
     const [mobileOpen, setMobileOpen] = useState(false);
+    const [activeHref, setActiveHref] = useState(siteConfig.navigation[0]?.href || '');
 
+    // Track scroll position to highlight active section
     useEffect(() => {
-        const onScroll = () => setScrolled(window.scrollY > 50);
-        window.addEventListener('scroll', onScroll);
+        const onScroll = () => {
+            setScrolled(window.scrollY > 50);
+
+            const sections = siteConfig.navigation
+                .map(item => document.querySelector(item.href))
+                .filter(Boolean);
+
+            let current = siteConfig.navigation[0]?.href || '';
+            for (const section of sections) {
+                if (section.getBoundingClientRect().top <= 100) {
+                    current = '#' + section.id;
+                }
+            }
+            setActiveHref(current);
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
@@ -22,6 +40,7 @@ export default function Navbar() {
 
     const handleNavClick = (href) => {
         setMobileOpen(false);
+        setActiveHref(href);
         const el = document.querySelector(href);
         if (el) el.scrollIntoView({ behavior: 'smooth' });
     };
@@ -30,32 +49,41 @@ export default function Navbar() {
         <nav className={`navbar ${scrolled ? 'navbar--scrolled' : ''}`}>
             <div className="navbar__inner container">
                 <a href="#hero" className="navbar__logo" onClick={() => handleNavClick('#hero')}>
-                    <LogoMark size={32} className="navbar__logo-svg" />
+                    <img src={logoNgMr} alt="Nuxelit" className="navbar__logo-img" />
                     <span className="navbar__logo-text">{siteConfig.company.name}</span>
                 </a>
 
-                {/* Desktop Nav */}
-                <ul className="navbar__links">
-                    {siteConfig.navigation.map((item) => (
-                        <li key={item.href}>
+                {/* Desktop Nav — tubelight pill */}
+                <div className="navbar__pill">
+                    {siteConfig.navigation.map((item) => {
+                        const isActive = activeHref === item.href;
+                        return (
                             <a
+                                key={item.href}
                                 href={item.href}
-                                className="navbar__link"
+                                className={`navbar__pill-link${isActive ? ' navbar__pill-link--active' : ''}`}
                                 onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
                             >
-                                {item.label}
+                                <span>{item.label}</span>
+                                {isActive && (
+                                    <motion.div
+                                        layoutId="tubelight"
+                                        className="navbar__lamp"
+                                        initial={false}
+                                        transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+                                    >
+                                        {/* Tube glow bar */}
+                                        <div className="navbar__lamp-bar">
+                                            <div className="navbar__lamp-glow navbar__lamp-glow--wide" />
+                                            <div className="navbar__lamp-glow navbar__lamp-glow--mid" />
+                                            <div className="navbar__lamp-glow navbar__lamp-glow--tight" />
+                                        </div>
+                                    </motion.div>
+                                )}
                             </a>
-                        </li>
-                    ))}
-                </ul>
-
-                <a
-                    href="#quote"
-                    className="navbar__cta btn btn-primary btn-sm"
-                    onClick={(e) => { e.preventDefault(); handleNavClick('#quote'); }}
-                >
-                    Cotizar Proyecto
-                </a>
+                        );
+                    })}
+                </div>
 
                 {/* Mobile Toggle */}
                 <button className="navbar__toggle" onClick={() => setMobileOpen(!mobileOpen)} aria-label="Toggle menu">
@@ -83,7 +111,7 @@ export default function Navbar() {
                                 >
                                     <a
                                         href={item.href}
-                                        className="navbar__mobile-link"
+                                        className={`navbar__mobile-link${activeHref === item.href ? ' navbar__mobile-link--active' : ''}`}
                                         onClick={(e) => { e.preventDefault(); handleNavClick(item.href); }}
                                     >
                                         {item.label}

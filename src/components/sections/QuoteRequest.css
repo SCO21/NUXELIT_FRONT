@@ -113,8 +113,8 @@
 }
 
 .quote__option--selected {
-    border-color: var(--color-primary);
-    background: rgba(108, 60, 225, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .quote__option--selected span {
