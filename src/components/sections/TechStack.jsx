@@ -4,6 +4,7 @@ import {
   SiAnthropic, SiVercel, SiRender, SiCloudinary,
   SiJsonwebtokens, SiFigma
 } from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 import './TechStack.css';
 
 const row1 = [
@@ -20,6 +21,7 @@ const row1 = [
 const row2 = [
   { Icon: SiGooglegemini, name: 'Gemini AI' },
   { Icon: SiAnthropic,    name: 'Claude' },
+  { Icon: FaAws,          name: 'AWS' },
   { Icon: SiVercel,       name: 'Vercel' },
   { Icon: SiRender,       name: 'Render' },
   { Icon: SiCloudinary,   name: 'Cloudinary' },

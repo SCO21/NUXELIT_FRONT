@@ -314,7 +314,7 @@ const siteConfig = {
   techStack: [
     'React', 'Vite', 'Node.js', 'Express', 'MongoDB', 
     'Mongoose', 'Tailwind CSS', 'Framer Motion', 'Gemini AI', 
-    'Claude', 'LangChain', 'Vercel', 'Render', 'Cloudinary', 'JWT', 'Figma',
+    'Claude', 'LangChain', 'AWS', 'Vercel', 'Render', 'Cloudinary', 'JWT', 'Figma',
   ],
 
   /* ───────── Quote Form Options ───────── */
