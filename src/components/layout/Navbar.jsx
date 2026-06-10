@@ -2,12 +2,22 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import siteConfig from '../../config/siteConfig';
-import logoNgMr from '../../assets/logo_versions/Isotipo - BlMo.png';
+import logoDark  from '../../assets/logo_versions/Isotipo - BlMo.png';
+import logoLight from '../../assets/logo_versions/Isotipo - Ng.png';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import './Navbar.css';
 
 export default function Navbar() {
     const [scrolled, setScrolled] = useState(false);
+    const [isLight, setIsLight] = useState(
+        document.documentElement.getAttribute('data-theme') === 'light'
+    );
+
+    useEffect(() => {
+        const handler = (e) => setIsLight(e.detail.theme === 'light');
+        window.addEventListener('themechange', handler);
+        return () => window.removeEventListener('themechange', handler);
+    }, []);
     const [mobileOpen, setMobileOpen] = useState(false);
     const [activeHref, setActiveHref] = useState(siteConfig.navigation[0]?.href || '');
 
@@ -55,7 +65,7 @@ export default function Navbar() {
         <nav className={`navbar ui-fade ui-fade--1 ${scrolled ? 'navbar--scrolled' : ''}`}>
             <div className="navbar__inner container">
                 <a href="#hero" className="navbar__logo" onClick={() => handleNavClick('#hero')}>
-                    <img src={logoNgMr} alt="Nuxelit" className="navbar__logo-img" />
+                    <img src={isLight ? logoLight : logoDark} alt="Nuxelit" className="navbar__logo-img" />
                     <span className="navbar__logo-text">{siteConfig.company.name}</span>
                 </a>
 

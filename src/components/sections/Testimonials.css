@@ -141,3 +141,25 @@
         height: 320px;
     }
 }
+
+[data-theme="light"] .tcarousel__card {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.08);
+    box-shadow: 0 8px 40px rgba(90, 36, 212, 0.1);
+}
+
+[data-theme="light"] .tcarousel__card-arrow {
+    color: rgba(15, 13, 26, 0.25);
+}
+
+[data-theme="light"] .tcarousel__card-arrow:hover {
+    color: rgba(15, 13, 26, 0.6);
+}
+
+[data-theme="light"] .tcarousel__avatar {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .tcarousel__dot {
+    background: rgba(0, 0, 0, 0.12);
+}

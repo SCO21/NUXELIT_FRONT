@@ -90,9 +90,10 @@ export function GlowyWavesHero() {
       mouseRef.current.x += (targetMouseRef.current.x - mouseRef.current.x) * smoothing;
       mouseRef.current.y += (targetMouseRef.current.y - mouseRef.current.y) * smoothing;
 
+      const light = document.documentElement.getAttribute('data-theme') === 'light';
       const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      grad.addColorStop(0, '#0b0d11');
-      grad.addColorStop(1, '#0e1018');
+      grad.addColorStop(0, light ? '#f5f4ff' : '#0b0d11');
+      grad.addColorStop(1, light ? '#ede9ff' : '#0e1018');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 

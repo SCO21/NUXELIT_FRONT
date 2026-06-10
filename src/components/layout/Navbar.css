@@ -187,6 +187,51 @@
     background: rgba(99, 45, 225, 0.15);
 }
 
+/* ── Light theme overrides ── */
+[data-theme="light"] .navbar__pill {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .navbar__pill-link {
+    color: rgba(15, 13, 26, 0.55);
+}
+
+[data-theme="light"] .navbar__pill-link:hover {
+    color: rgba(15, 13, 26, 0.9);
+}
+
+[data-theme="light"] .navbar__pill-link--active {
+    color: #0f0d1a;
+}
+
+[data-theme="light"] .navbar__logo-text {
+    color: #0f0d1a;
+}
+
+[data-theme="light"] .navbar__lamp {
+    background: rgba(90, 36, 212, 0.08);
+}
+
+[data-theme="light"] .navbar__toggle {
+    color: #0f0d1a;
+}
+
+[data-theme="light"] .navbar__mobile {
+    background: #ffffff;
+    border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .navbar__mobile-link {
+    color: rgba(15, 13, 26, 0.65);
+}
+
+[data-theme="light"] .navbar__mobile-link:hover,
+[data-theme="light"] .navbar__mobile-link--active {
+    color: #0f0d1a;
+    background: rgba(90, 36, 212, 0.07);
+}
+
 @media (max-width: 1024px) {
     .navbar__pill {
         display: none;

@@ -200,3 +200,11 @@
     0%, 100% { opacity: 0.2; transform: translateY(0); }
     50% { opacity: 1; transform: translateY(-2px); }
 }
+
+[data-theme="light"] .ai__chat-header {
+    border-bottom-color: rgba(0, 0, 0, 0.07);
+}
+
+[data-theme="light"] .ai__chat-input {
+    border-top-color: rgba(0, 0, 0, 0.07);
+}

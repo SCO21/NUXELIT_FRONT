@@ -183,3 +183,12 @@
         right: 2rem;
     }
 }
+
+[data-theme="light"] .quote__option--selected {
+    border-color: rgba(90, 36, 212, 0.25);
+    background: rgba(90, 36, 212, 0.05);
+}
+
+[data-theme="light"] .quote__actions {
+    border-top-color: rgba(0, 0, 0, 0.07);
+}

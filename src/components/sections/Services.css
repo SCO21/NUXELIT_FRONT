@@ -99,3 +99,25 @@
         grid-template-columns: 1fr;
     }
 }
+
+[data-theme="light"] .tilt-card.services__card {
+    background: #ffffff;
+    border: 1px solid #dcd8f5;
+    box-shadow: 0 2px 16px rgba(90,36,212,0.06);
+}
+
+[data-theme="light"] .tilt-card:hover {
+    box-shadow: 0 12px 40px rgba(90,36,212,0.14);
+}
+
+[data-theme="light"] .tilt-card__shine {
+    background: radial-gradient(
+        circle at var(--gx) var(--gy),
+        rgba(15, 13, 26, 0.18) 0%,
+        transparent 55%
+    );
+}
+
+[data-theme="light"] .tilt-card:hover .tilt-card__shine {
+    opacity: 1;
+}

@@ -1,20 +1,16 @@
 /**
- * Theme Utility — Generates CSS custom properties from siteConfig
+ * Theme Utility — sólo establece el atributo data-theme en <html>.
+ * Las CSS variables viven en index.css (:root para dark,
+ * [data-theme="light"] para light). Sin inline styles.
  */
-import siteConfig from '../config/siteConfig';
-
-export function applyTheme() {
-    const { theme } = siteConfig;
-    const root = document.documentElement;
-
-    Object.entries(theme).forEach(([key, value]) => {
-        const cssVar = `--color-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
-        root.style.setProperty(cssVar, value);
-    });
+export function applyTheme(theme = 'dark') {
+    document.documentElement.setAttribute('data-theme', theme);
 }
 
 export function getThemeColor(key) {
-    return siteConfig.theme[key] || '';
+    return getComputedStyle(document.documentElement)
+        .getPropertyValue(`--color-${key}`)
+        .trim();
 }
 
 export default { applyTheme, getThemeColor };

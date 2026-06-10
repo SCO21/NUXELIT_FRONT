@@ -131,6 +131,25 @@
     line-height: 1.6;
 }
 
+/* ── Light theme ── */
+[data-theme="light"] .footer {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .footer__social {
+    border-color: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .footer__social:hover {
+    border-color: rgba(0, 0, 0, 0.18);
+    color: #0f0d1a;
+    background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .footer__bottom-wrap {
+    border-top-color: rgba(0, 0, 0, 0.08);
+}
+
 /* ── Responsive ── */
 @media (max-width: 640px) {
     .footer__top {

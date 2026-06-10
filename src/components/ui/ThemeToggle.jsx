@@ -6,9 +6,11 @@ export function ThemeToggle({ className = '' }) {
     const [isDark, setIsDark] = useState(true);
 
     const handleToggle = () => {
-        setIsDark(!isDark);
-        // TODO: apply light theme when ready
-        // document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+        const next = !isDark;
+        setIsDark(next);
+        const theme = next ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
     };
 
     return (

@@ -113,3 +113,22 @@
     background: rgba(239, 68, 68, 0.1);
     color: var(--color-error);
 }
+
+[data-theme="light"] .cfield__control {
+    border-color: rgba(0, 0, 0, 0.12);
+    background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .cfield__control::before {
+    box-shadow: inset 0 -1px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .cfield__input,
+[data-theme="light"] .cfield__textarea {
+    color: #0f0d1a;
+}
+
+[data-theme="light"] .cfield__input::placeholder,
+[data-theme="light"] .cfield__textarea::placeholder {
+    color: rgba(15, 13, 26, 0.4);
+}

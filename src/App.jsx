@@ -53,7 +53,7 @@ export default function App() {
     }, []);
 
     useEffect(() => {
-        applyTheme();
+        applyTheme('dark');
         if (!sessionStorage.getItem('nuxelit_session')) {
             sessionStorage.setItem('nuxelit_session', crypto.randomUUID());
         }

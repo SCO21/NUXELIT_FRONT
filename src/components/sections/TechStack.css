@@ -87,6 +87,11 @@
     color: #ffffff;
 }
 
+[data-theme="light"] .techstack__icon,
+[data-theme="light"] .techstack__name {
+    color: #0f0d1a;
+}
+
 .techstack__rows {
     display: flex;
     flex-direction: column;
