@@ -28,12 +28,12 @@ const row2 = [
 ];
 
 function MarqueeRow({ items, reverse = false }) {
-  const doubled = [...items, ...items];
+  const repeated = [...items, ...items, ...items, ...items];
 
   return (
     <div className="techstack__marquee">
       <div className={`techstack__track${reverse ? ' techstack__track--reverse' : ''}`}>
-        {doubled.map(({ Icon, name }, i) => (
+        {repeated.map(({ Icon, name }, i) => (
           <div key={i} className="techstack__item">
             <Icon className="techstack__icon" />
             <span className="techstack__name">{name}</span>
