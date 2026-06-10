@@ -1,35 +1,30 @@
-import { useInView } from 'react-intersection-observer';
 import {
-  SiReact, SiNextdotjs, SiNodedotjs, SiTypescript, SiPython,
-  SiDocker, SiPostgresql, SiMongodb, SiGraphql, SiFlutter,
-  SiFirebase, SiFigma, SiKubernetes,
-  SiRedis, SiTensorflow, SiVuedotjs, SiGo,
+  SiReact, SiVite, SiNodedotjs, SiExpress, SiMongodb,
+  SiMongoose, SiTailwindcss, SiFramer, SiGooglegemini,
+  SiAnthropic, SiVercel, SiRender, SiCloudinary,
+  SiJsonwebtokens, SiFigma
 } from 'react-icons/si';
-import { FaAws } from 'react-icons/fa';
 import './TechStack.css';
 
 const row1 = [
   { Icon: SiReact,       name: 'React' },
-  { Icon: SiNextdotjs,   name: 'Next.js' },
+  { Icon: SiVite,        name: 'Vite' },
   { Icon: SiNodedotjs,   name: 'Node.js' },
-  { Icon: SiTypescript,  name: 'TypeScript' },
-  { Icon: SiPython,      name: 'Python' },
-  { Icon: SiDocker,      name: 'Docker' },
-  { Icon: SiPostgresql,  name: 'PostgreSQL' },
+  { Icon: SiExpress,     name: 'Express' },
   { Icon: SiMongodb,     name: 'MongoDB' },
-  { Icon: SiGraphql,     name: 'GraphQL' },
+  { Icon: SiMongoose,    name: 'Mongoose' },
+  { Icon: SiTailwindcss, name: 'Tailwind CSS' },
+  { Icon: SiFramer,      name: 'Framer Motion' },
 ];
 
 const row2 = [
-  { Icon: SiFlutter,     name: 'Flutter' },
-  { Icon: FaAws,         name: 'AWS' },
-  { Icon: SiFirebase,    name: 'Firebase' },
-  { Icon: SiFigma,       name: 'Figma' },
-  { Icon: SiKubernetes,  name: 'Kubernetes' },
-  { Icon: SiRedis,       name: 'Redis' },
-  { Icon: SiTensorflow,  name: 'TensorFlow' },
-  { Icon: SiVuedotjs,    name: 'Vue.js' },
-  { Icon: SiGo,          name: 'Go' },
+  { Icon: SiGooglegemini, name: 'Gemini AI' },
+  { Icon: SiAnthropic,    name: 'Claude' },
+  { Icon: SiVercel,       name: 'Vercel' },
+  { Icon: SiRender,       name: 'Render' },
+  { Icon: SiCloudinary,   name: 'Cloudinary' },
+  { Icon: SiJsonwebtokens, name: 'JWT' },
+  { Icon: SiFigma,        name: 'Figma' },
 ];
 
 function MarqueeRow({ items, reverse = false }) {
