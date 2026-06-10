@@ -68,7 +68,6 @@ const siteConfig = {
     { label: 'Planes', href: '#plans' },
     { label: 'IA & Chatbots', href: '#ai-showcase' },
     { label: 'Portafolio', href: '#portfolio' },
-    { label: 'Equipo', href: '#team' },
     { label: 'Contacto', href: '#contact' },
   ],
 
@@ -313,11 +312,9 @@ const siteConfig = {
 
   /* ───────── Tech Stack ───────── */
   techStack: [
-    'React', 'Next.js', 'Vue.js', 'Angular', 'Node.js',
-    'Python', 'Java', 'Go', 'TypeScript', 'Flutter',
-    'React Native', 'AWS', 'Azure', 'GCP', 'Docker',
-    'Kubernetes', 'MongoDB', 'PostgreSQL', 'Redis', 'GraphQL',
-    'TensorFlow', 'PyTorch', 'OpenAI', 'Firebase', 'Figma',
+    'React', 'Vite', 'Node.js', 'Express', 'MongoDB', 
+    'Mongoose', 'Tailwind CSS', 'Framer Motion', 'Gemini AI', 
+    'Claude', 'LangChain', 'Vercel', 'Render', 'Cloudinary', 'JWT', 'Figma',
   ],
 
   /* ───────── Quote Form Options ───────── */

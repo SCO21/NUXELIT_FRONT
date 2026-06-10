@@ -21,9 +21,15 @@ export default function Navbar() {
                 .filter(Boolean);
 
             let current = siteConfig.navigation[0]?.href || '';
-            for (const section of sections) {
-                if (section.getBoundingClientRect().top <= 100) {
-                    current = '#' + section.id;
+            const isAtBottom = (window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50);
+
+            if (isAtBottom && sections.length > 0) {
+                current = '#' + sections[sections.length - 1].id;
+            } else {
+                for (const section of sections) {
+                    if (section.getBoundingClientRect().top <= 100) {
+                        current = '#' + section.id;
+                    }
                 }
             }
             setActiveHref(current);
