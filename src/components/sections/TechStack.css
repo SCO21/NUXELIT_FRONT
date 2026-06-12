@@ -89,7 +89,26 @@
 
 [data-theme="light"] .techstack__icon,
 [data-theme="light"] .techstack__name {
-    color: #0f0d1a;
+    color: #131519;
+}
+
+[data-theme="light"] .techstack__item {
+    opacity: 0.65;
+}
+
+[data-theme="light"] .techstack__item:hover {
+    opacity: 1;
+}
+
+/* Quitar la mancha morada del fondo en light */
+[data-theme="light"] .techstack::before {
+    background: none;
+}
+
+[data-theme="light"] .techstack::after {
+    background:
+        linear-gradient(to bottom, rgba(99, 45, 225, 0.12) 0px, transparent 1px),
+        linear-gradient(to top,    rgba(99, 45, 225, 0.12) 0px, transparent 1px);
 }
 
 .techstack__rows {

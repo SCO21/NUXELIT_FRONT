@@ -290,7 +290,7 @@
 }
 
 [data-theme="light"] .plans__custom-link:hover {
-    color: var(--color-primary-dark);
+    color: #3a36e4;
 }
 
 /* ── Responsive ── */

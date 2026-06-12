@@ -208,29 +208,30 @@
 }
 
 [data-theme="light"] .gwh__badge {
-    color: rgba(15, 13, 26, 0.65);
+    color: #2a2d32;
 }
 
 [data-theme="light"] .gwh__pill {
-    color: rgba(15, 13, 26, 0.55);
+    color: #2a2d32;
 }
 
 [data-theme="light"] .gwh__stat-label {
-    color: rgba(15, 13, 26, 0.45);
+    color: #52506a;
+    font-weight: 600;
 }
 
 [data-theme="light"] .gwh__stat-value {
-    color: #0f0d1a;
+    color: #0b0d11;
 }
 
 [data-theme="light"] .gwh__btn--secondary {
-    background: rgba(15, 13, 26, 0.06);
-    color: rgba(15, 13, 26, 0.75);
-    border-color: rgba(15, 13, 26, 0.12);
+    background: rgba(11, 13, 17, 0.07);
+    color: #2a2d32;
+    border-color: rgba(11, 13, 17, 0.14);
 }
 
 [data-theme="light"] .gwh__btn--secondary:hover {
-    background: rgba(15, 13, 26, 0.1);
-    color: #0f0d1a;
-    border-color: rgba(15, 13, 26, 0.2);
+    background: rgba(11, 13, 17, 0.12);
+    color: #0b0d11;
+    border-color: rgba(11, 13, 17, 0.22);
 }

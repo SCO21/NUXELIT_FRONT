@@ -29,7 +29,7 @@ function StarCanvas() {
 
         const draw = () => {
             const light = document.documentElement.getAttribute('data-theme') === 'light';
-            const bg    = light ? '#f0eeff' : '#0b0d11';
+            const bg    = light ? '#eeecf9' : '#0b0d11';
             const color = light ? '35,10,90' : '180,160,255';
 
             ctx.fillStyle = bg;

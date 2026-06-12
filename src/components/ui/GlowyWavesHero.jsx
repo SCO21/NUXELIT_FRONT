@@ -92,8 +92,8 @@ export function GlowyWavesHero() {
 
       const light = document.documentElement.getAttribute('data-theme') === 'light';
       const grad = ctx.createLinearGradient(0, 0, 0, canvas.height);
-      grad.addColorStop(0, light ? '#f5f4ff' : '#0b0d11');
-      grad.addColorStop(1, light ? '#ede9ff' : '#0e1018');
+      grad.addColorStop(0, light ? '#ffffff' : '#0b0d11');
+      grad.addColorStop(1, light ? '#f0edfb' : '#0e1018');
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 

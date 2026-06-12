@@ -1,11 +1,22 @@
+import { useState, useEffect } from 'react';
 import { FaLinkedinIn, FaGithub, FaInstagram, FaWhatsapp } from 'react-icons/fa';
 import { MdEmail } from 'react-icons/md';
 import siteConfig from '../../config/siteConfig';
-import logoImg from '../../assets/logo_versions/Isotipo - BlMo.png';
+import logoDark  from '../../assets/logo_versions/Isotipo - BlMo.png';
+import logoLight from '../../assets/logo_versions/Isotipo - NgMr.png';
 import './Footer.css';
 
 export default function Footer() {
     const { company, contact, navigation } = siteConfig;
+
+    const [isLight, setIsLight] = useState(
+        document.documentElement.getAttribute('data-theme') === 'light'
+    );
+    useEffect(() => {
+        const handler = (e) => setIsLight(e.detail.theme === 'light');
+        window.addEventListener('themechange', handler);
+        return () => window.removeEventListener('themechange', handler);
+    }, []);
     const year = new Date().getFullYear();
 
     const socialLinks = [
@@ -29,7 +40,7 @@ export default function Footer() {
                 {/* Top row — logo + socials */}
                 <div className="footer__top">
                     <a href="#hero" className="footer__brand" aria-label={company.name}>
-                        <img src={logoImg} alt={company.name} className="footer__logo-img" />
+                        <img src={isLight ? logoLight : logoDark} alt={company.name} className="footer__logo-img" />
                         <span className="footer__brand-name">{company.name}</span>
                     </a>
                     <ul className="footer__socials">

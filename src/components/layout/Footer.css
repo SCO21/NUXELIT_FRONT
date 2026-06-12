@@ -133,7 +133,9 @@
 
 /* ── Light theme ── */
 [data-theme="light"] .footer {
-    border-top-color: rgba(0, 0, 0, 0.08);
+    background: #ffffff;
+    border-top: 2px solid #c8c2e8;
+    box-shadow: 0 -6px 28px rgba(50, 20, 120, 0.08);
 }
 
 [data-theme="light"] .footer__social {

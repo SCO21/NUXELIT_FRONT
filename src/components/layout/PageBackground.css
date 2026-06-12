@@ -15,12 +15,22 @@
 }
 
 [data-theme="light"] {
-  --bg-base:     #f8f7ff;
-  --bg-blob-1:   rgba(99,  45, 225, 0.18);
-  --bg-blob-2:   rgba(58,  54, 228, 0.14);
-  --bg-blob-3:   rgba(126, 81, 248, 0.10);
-  --bg-blob-4:   rgba(30,  30, 180, 0.08);
-  --bg-grid-dot: rgba(0, 0, 0, 0.035);
+  --bg-base:     #eeecf9;
+  --bg-blob-1:   rgba(99,  45, 225, 0.11);
+  --bg-blob-2:   rgba(58,  54, 228, 0.08);
+  --bg-blob-3:   rgba(126, 81, 248, 0.04);
+  --bg-blob-4:   rgba(30,  30, 180, 0.03);
+  --bg-grid-dot: rgba(0, 0, 0, 0.025);
+}
+
+[data-theme="light"] .page-bg__blob--1 {
+  width: 550px;
+  height: 550px;
+}
+
+[data-theme="light"] .page-bg__blob--2 {
+  width: 450px;
+  height: 450px;
 }
 
 .page-bg {

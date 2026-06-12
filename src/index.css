@@ -95,14 +95,14 @@
   --color-secondary-light: #4f4de0;
   --color-accent: #3330cc;
   --color-accent-light: #4f4de0;
-  --color-background: #f8f7ff;
+  --color-background: #eeecf9;
   --color-background-light: #ffffff;
   --color-background-card: #ffffff;
-  --color-surface: #ede9ff;
-  --color-text: #0f0d1a;
-  --color-text-secondary: #3d3a52;
-  --color-text-muted: #7a7890;
-  --color-border: #dcd8f5;
+  --color-surface: #ebe6ff;
+  --color-text: #0b0d11;
+  --color-text-secondary: #2a2d32;
+  --color-text-muted: #52506a;
+  --color-border: #cdc8ee;
   --color-gradient: linear-gradient(135deg, #5a24d4 0%, #4340e8 50%, #3330cc 100%);
   --color-gradient-subtle: linear-gradient(135deg, #5a24d4 0%, #3330cc 100%);
   --shadow-sm: 0 2px 8px rgba(90,36,212,0.08);
@@ -446,24 +446,29 @@ body.ui-ready .ui-fade {
    componentes con colores hardcodeados en dark.
 ═══════════════════════════════════════════════════ */
 
+/* -- Footer: blanco limpio -- */
+[data-theme="light"] .footer {
+  background: #ffffff;
+}
+
 /* -- Cards genéricas -- */
 [data-theme="light"] .card {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }
 
 /* -- Services -- */
 [data-theme="light"] .services__title {
-  color: #0f0d1a;
+  color: #0b0d11;
 }
 [data-theme="light"] .services__desc {
-  color: #3d3a52;
+  color: #2a2d32;
 }
 
 /* -- Plans cards -- */
 [data-theme="light"] .plans__card {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }
 [data-theme="light"] .plans__card--popular {
   background: linear-gradient(180deg, rgba(90,36,212,0.05) 0%, #ffffff 100%);
@@ -477,17 +482,17 @@ body.ui-ready .ui-fade {
 /* -- Portfolio -- */
 [data-theme="light"] .portfolio__card {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }
 
 /* -- AI Showcase -- */
 [data-theme="light"] .ai__chatbot-mock {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }
 [data-theme="light"] .ai__module {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }
 [data-theme="light"] .ai__module-title {
   color: #0f0d1a;
@@ -499,25 +504,25 @@ body.ui-ready .ui-fade {
 /* -- Quote wrapper -- */
 [data-theme="light"] .quote__wrapper {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }
 [data-theme="light"] .quote__option {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
   color: #0f0d1a;
 }
 
 /* -- Testimonials -- */
 [data-theme="light"] .tcarousel__card {
   background: #ffffff;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
   box-shadow: 0 8px 40px rgba(90,36,212,0.08);
 }
 [data-theme="light"] .tcarousel__name {
-  color: #0f0d1a;
+  color: #0b0d11;
 }
 [data-theme="light"] .tcarousel__text {
-  color: #3d3a52;
+  color: #2a2d32;
 }
 
 /* -- TechStack -- */
@@ -529,18 +534,18 @@ body.ui-ready .ui-fade {
 /* -- Hero badges / pills / stats -- */
 [data-theme="light"] .gwh__badge,
 [data-theme="light"] .gwh__pill {
-  color: rgba(15,13,26,0.6);
+  color: #2a2d32;
 }
 [data-theme="light"] .gwh__stat-label {
-  color: rgba(15,13,26,0.45);
+  color: #52506a;
 }
 [data-theme="light"] .gwh__stat-value {
-  color: #0f0d1a;
+  color: #0b0d11;
 }
 [data-theme="light"] .gwh__btn--secondary {
-  background: rgba(15,13,26,0.06);
-  color: rgba(15,13,26,0.75);
-  border-color: rgba(15,13,26,0.12);
+  background: rgba(11,13,17,0.07);
+  color: #2a2d32;
+  border-color: rgba(11,13,17,0.14);
 }
 
 /* -- Contact form -- */
@@ -564,46 +569,60 @@ body.ui-ready .ui-fade {
   border-top-color: #dcd8f5;
 }
 
-/* -- Shadows en cards y boxes -- */
+/* -- Elevación limpia: borde + sombra corta y nítida -- */
 [data-theme="light"] .card {
-  box-shadow: 0 4px 24px rgba(60,20,140,0.10), 0 1px 4px rgba(60,20,140,0.07);
+  border: 1px solid #cdc8ee;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.10);
 }
 [data-theme="light"] .card:hover {
-  box-shadow: 0 8px 36px rgba(60,20,140,0.16), 0 2px 8px rgba(60,20,140,0.10);
+  border-color: #a89ee0;
+  box-shadow: 0 4px 16px rgba(42,45,50,0.14);
+  transform: translateY(-3px);
 }
 [data-theme="light"] .tilt-card.services__card {
-  box-shadow: 0 4px 24px rgba(60,20,140,0.10), 0 1px 4px rgba(60,20,140,0.07) !important;
+  border: 1px solid #cdc8ee !important;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.10) !important;
 }
 [data-theme="light"] .tilt-card:hover {
-  box-shadow: 0 12px 40px rgba(60,20,140,0.18), 0 3px 10px rgba(60,20,140,0.10) !important;
+  border-color: #a89ee0 !important;
+  box-shadow: 0 4px 16px rgba(42,45,50,0.15) !important;
 }
 [data-theme="light"] .plans__card {
-  box-shadow: 0 4px 24px rgba(60,20,140,0.09), 0 1px 4px rgba(60,20,140,0.06);
+  border: 1px solid #cdc8ee;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.09);
 }
 [data-theme="light"] .plans__card--popular {
-  box-shadow: 0 8px 40px rgba(60,20,140,0.18), 0 2px 8px rgba(60,20,140,0.10) !important;
+  border: 1px solid #a89ee0 !important;
+  box-shadow: 0 4px 20px rgba(90,36,212,0.14) !important;
 }
 [data-theme="light"] .tcarousel__card {
-  box-shadow: 0 6px 32px rgba(60,20,140,0.12), 0 2px 6px rgba(60,20,140,0.07) !important;
+  border: 1px solid #cdc8ee !important;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.10) !important;
 }
 [data-theme="light"] .gwh__stats {
-  box-shadow: 0 4px 24px rgba(60,20,140,0.10), 0 1px 4px rgba(60,20,140,0.06);
+  border: 1px solid #cdc8ee;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.09);
 }
 [data-theme="light"] .gwh__badge,
 [data-theme="light"] .gwh__pill {
-  box-shadow: 0 2px 10px rgba(60,20,140,0.08);
+  border-color: #b8b2d8;
+  box-shadow: none;
 }
 [data-theme="light"] .portfolio__card {
-  box-shadow: 0 4px 24px rgba(60,20,140,0.09), 0 1px 4px rgba(60,20,140,0.06);
+  border: 1px solid #cdc8ee;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.09);
 }
 [data-theme="light"] .portfolio__card:hover {
-  box-shadow: 0 8px 36px rgba(60,20,140,0.15) !important;
+  border-color: #a89ee0 !important;
+  box-shadow: 0 4px 16px rgba(42,45,50,0.13) !important;
 }
 [data-theme="light"] .floating-chatbot-window {
-  box-shadow: 0 8px 40px rgba(60,20,140,0.14);
+  border: 1px solid #cdc8ee;
+  box-shadow: 0 4px 20px rgba(42,45,50,0.12);
 }
 [data-theme="light"] .ai__module.card {
-  box-shadow: 0 4px 24px rgba(60,20,140,0.09), 0 1px 4px rgba(60,20,140,0.06);
+  border: 1px solid #cdc8ee;
+  box-shadow: 0 2px 8px rgba(42,45,50,0.09);
 }
 
 /* -- Tags / badges genéricos -- */
@@ -614,5 +633,5 @@ body.ui-ready .ui-fade {
 [data-theme="light"] .tag {
   background: #ede9ff;
   color: #3d3a52;
-  border-color: #dcd8f5;
+  border-color: #b8b2d8;
 }

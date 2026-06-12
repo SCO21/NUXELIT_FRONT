@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { HiMenuAlt3, HiX } from 'react-icons/hi';
 import siteConfig from '../../config/siteConfig';
 import logoDark  from '../../assets/logo_versions/Isotipo - BlMo.png';
-import logoLight from '../../assets/logo_versions/Isotipo - Ng.png';
+import logoLight from '../../assets/logo_versions/Isotipo - NgMr.png';
 import { ThemeToggle } from '../ui/ThemeToggle';
 import './Navbar.css';
 

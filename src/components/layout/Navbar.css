@@ -194,19 +194,19 @@
 }
 
 [data-theme="light"] .navbar__pill-link {
-    color: rgba(15, 13, 26, 0.55);
+    color: #52506a;
 }
 
 [data-theme="light"] .navbar__pill-link:hover {
-    color: rgba(15, 13, 26, 0.9);
+    color: #131519;
 }
 
 [data-theme="light"] .navbar__pill-link--active {
-    color: #0f0d1a;
+    color: #0b0d11;
 }
 
 [data-theme="light"] .navbar__logo-text {
-    color: #0f0d1a;
+    color: #0b0d11;
 }
 
 [data-theme="light"] .navbar__lamp {

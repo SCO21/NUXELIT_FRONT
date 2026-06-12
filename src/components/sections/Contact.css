@@ -125,10 +125,10 @@
 
 [data-theme="light"] .cfield__input,
 [data-theme="light"] .cfield__textarea {
-    color: #0f0d1a;
+    color: #0b0d11;
 }
 
 [data-theme="light"] .cfield__input::placeholder,
 [data-theme="light"] .cfield__textarea::placeholder {
-    color: rgba(15, 13, 26, 0.4);
+    color: #52506a;
 }
